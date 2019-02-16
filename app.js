@@ -4,6 +4,7 @@ const fs = require("fs");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const sassMiddleware = require("node-sass-middleware");
+//const vr = require("./src/routes");
 
 const app = express();
 

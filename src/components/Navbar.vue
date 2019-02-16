@@ -8,7 +8,7 @@
         </ul>
         <form class="form-inline my-2 my-lg-0">
           <input class="form-control mr-sm-2" type="text" placeholder="Пошук" />
-          <button class="btn btn-secondary my-2 my-sm-0" type="submit">sasaj</button>
+          <button class="btn btn-secondary my-2 my-sm-0" type="submit">Пошук</button>
         </form>
       </div>
     </nav>
