@@ -8,7 +8,7 @@ const routes = [
     component: Main
   },
   {
-    path: "/user",
+    path: "/user.view",
     name: "user",
     component: User
   }

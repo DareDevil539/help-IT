@@ -10,6 +10,9 @@
         </div>
       </div>
     </div>
+
+
+
   </div>
 </template>
 
@@ -22,6 +25,11 @@ export default {
   components: {
     Features,
     LoginForm
+  },
+  created() {
+    this.$http.get("https://help-it.herokuapp.com/api?module=users&params=email+name").then(res => {
+      console.log(res.body);
+    });
   }
 }
 </script>

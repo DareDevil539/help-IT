@@ -30,12 +30,3 @@ function handleDisconnect() {
 }
 
 handleDisconnect();
-console.log("DB server is running...");
-
-connection.query("SELECT * from `users`", (err, res) => {
-  if (err) throw err;
-  console.log(res);
-});
-
-connection.end();
-console.log("DB server is down...");

@@ -4,7 +4,7 @@ const fs = require("fs");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const sassMiddleware = require("node-sass-middleware");
-//const vr = require("./src/routes");
+const apiCtrl = require("./api/api");
 
 const app = express();
 
@@ -22,7 +22,9 @@ app.use(
 );
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use(/.*/, (req, res) => {
+app.use(/\/api/, apiCtrl);
+
+app.use(/.*\.view/, (req, res) => {
   res.writeHead(200, { "Content-Type": "text/html" });
   let stream = fs.createReadStream(path.join("public", "index.html"), "utf-8");
   stream.pipe(res);
