@@ -1,4 +1,5 @@
 const mysql = require("mysql");
+const filter = require("./filter");
 
 let db_config = {
   host: "game.ok.uz.ua",
@@ -31,7 +32,7 @@ function handleDisconnect() {
 function execute(query, cb) {
   connection.query(query, (err, sel) => {
     if (err) throw err;
-  
+
     return cb(sel);
   });
 }
@@ -55,14 +56,35 @@ handleDisconnect();
 module.exports = function(req, res) {
   let module = req.query.module;
   let params = req.query.params || "*";
+  let origin = req.query.origin || "";
   let query = parseQuery(req.query.query);
+  let statusCode = 0;
+  let headers = {};
+  let end = "";
 
   params = params.replace(" ", ", ");
 
   console.log(`select ${params} from ${module} where ${query}`);
-  res.writeHead(200, { "Content-Type": "application/json" });
   execute(`select ${params} from ${module} where ${query}`, sel => {
-    console.log(sel);
-    res.end(JSON.stringify(sel));
+    f:
+    for (let i = 0; i < filter.length; i++) {
+      for (let j = 0; j < sel.length; j++) {
+        if (sel[j].hasOwnProperty(filter[i]) && origin !== "аdmіn") {
+          console.log("true");
+          statusCode = 403;
+          headers["Content-Type"] = "text/plain";
+          end = "You haven`t access";
+          break f;
+        } else {
+          console.log("false");
+          statusCode = 200;
+          headers["Content-Type"] = "application/json";
+          end = JSON.stringify(sel);
+        }
+      }
+    }
+
+    res.writeHead(statusCode, headers);
+    res.end(end);
   });
-}
+};
