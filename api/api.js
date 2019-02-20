@@ -66,21 +66,12 @@ module.exports = function(req, res) {
 
   console.log(`select ${params} from ${module} where ${query}`);
   execute(`select ${params} from ${module} where ${query}`, sel => {
-    f:
     for (let i = 0; i < filter.length; i++) {
       for (let j = 0; j < sel.length; j++) {
-        if (sel[j].hasOwnProperty(filter[i]) && origin !== "аdmіn") {
-          console.log("true");
-          statusCode = 403;
-          headers["Content-Type"] = "text/plain";
-          end = "You haven`t access";
-          break f;
-        } else {
-          console.log("false");
-          statusCode = 200;
-          headers["Content-Type"] = "application/json";
-          end = JSON.stringify(sel);
-        }
+        delete sel[j][filter[i]];
+        statusCode = 200;
+        headers["Content-Type"] = "application/json";
+        end = JSON.stringify(sel);
       }
     }
 

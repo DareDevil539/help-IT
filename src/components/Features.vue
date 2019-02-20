@@ -6,7 +6,7 @@
       <hr class="my-4">
       <p>{{ helloArticle.text }}</p>
       <p class="lead">
-        <a class="btn btn-primary btn-lg" href="#" role="button">Приєднатися!</a>
+        <router-link to="/reg.view" class="btn btn-primary btn-lg" role="button">Приєднатися!</router-link>
       </p>
     </div>
   </div>
@@ -15,13 +15,15 @@
 <script>
 export default {
   name: "Features",
-  data: () => ({
-    helloArticle: {
-      title: "Привіт, друже!",
-      subtitle: "Ти знаходишся на порталі HelpIT — навчальній соціальній мережі для всіх, хто цікавиться програмуванням!",
-      text: "Тут ти можеш отримати нові знання, знайти друзів зі спільними інтересами, цікавий матеріал, чи відповідь на питання, яке не дає тобі заснути"
-    }
-  })
+  data: function() {
+    return {
+      helloArticle: {
+        title: "Привіт, друже!",
+        subtitle: "Ти знаходишся на порталі HelpIT — навчальній соціальній мережі для всіх, хто цікавиться програмуванням!",
+        text: "Тут ти можеш отримати нові знання, знайти друзів зі спільними інтересами, цікавий матеріал, чи відповідь на питання, яке не дає тобі заснути"
+      }
+    };
+  }
 }
 </script>
 

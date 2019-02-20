@@ -1,3 +1,97 @@
 body {
   background-color: #ecf0f1;
 }
+
+#preloader {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #313131;
+  z-index: 999;
+  -webkit-transition: 1s all;
+  -moz-transition: 1s all;
+  -ms-transition: 1s all;
+  -o-transition: 1s all;
+  transition: 1s all;
+  opacity: 1;
+  visibility: visible;
+}
+
+#preloader.done {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loader-out,
+.loader-center,
+.loader-in {
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  border: 2px solid #313131;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.loader-out {
+  width: 150px;
+  height: 150px;
+  border-top-color: red;
+  animation: 1s spin infinite linear;
+}
+
+.loader-center {
+  width: 100px;
+  height: 100px;
+  border-top-color: green;
+  animation: 1s spin_inv infinite linear;
+}
+
+.loader-in {
+  width: 50px;
+  height: 50px;
+  border-top-color: blue;
+  animation: 1s spin infinite linear;
+}
+
+@keyframes spin {
+  from {
+      -webkit-transform: translate(-50%, -50%) rotate(0deg);
+      -moz-transform: translate(-50%, -50%) rotate(0deg);
+      -ms-transform: translate(-50%, -50%) rotate(0deg);
+      -o-transform: translate(-50%, -50%) rotate(0deg);
+      transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+      -webkit-transform: translate(-50%, -50%) rotate(360deg);
+      -moz-transform: translate(-50%, -50%) rotate(360deg);
+      -ms-transform: translate(-50%, -50%) rotate(360deg);
+      -o-transform: translate(-50%, -50%) rotate(360deg);
+      transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes spin_inv {
+  from {
+      -webkit-transform: translate(-50%, -50%) rotate(360deg);
+      -moz-transform: translate(-50%, -50%) rotate(360deg);
+      -ms-transform: translate(-50%, -50%) rotate(360deg);
+      -o-transform: translate(-50%, -50%) rotate(360deg);
+      transform: translate(-50%, -50%) rotate(360deg);
+  }
+  to {
+      -webkit-transform: translate(-50%, -50%) rotate(0deg);
+      -moz-transform: translate(-50%, -50%) rotate(0deg);
+      -ms-transform: translate(-50%, -50%) rotate(0deg);
+      -o-transform: translate(-50%, -50%) rotate(0deg);
+      transform: translate(-50%, -50%) rotate(0deg);
+  }
+}

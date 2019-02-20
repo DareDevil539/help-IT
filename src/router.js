@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Main from "./components/Main";
 import User from "./components/User";
+import RegForm from "./components/RegForm";
 
 Vue.use(VueRouter);
 
@@ -23,6 +24,11 @@ export default new VueRouter({
       path: "/user.view",
       name: "user",
       component: User
+    },
+    {
+      path: "/reg.view",
+      name: "regform",
+      component: RegForm
     }
   ]
 });

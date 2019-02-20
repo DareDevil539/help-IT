@@ -10,11 +10,7 @@
         <label for="InputPassword">Пароль</label>
         <input type="password" class="form-control" id="InputPassword" placeholder="Введіть пароль">
       </div>
-      <div class="form-group form-check">
-        <input type="checkbox" class="form-check-input" id="Check">
-        <label class="form-check-label" for="Check">Запам'ятати мене</label>
-      </div>
-      <button type="submit" class="btn btn-primary">Вхід</button>
+      <button type="submit" class="btn btn-primary mb-4">Вхід</button>
     </form>
   </div>
 </template>

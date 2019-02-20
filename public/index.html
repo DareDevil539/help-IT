@@ -10,11 +10,37 @@
     <title>HelpIT</title>
   </head>
   <body>
+    <div id="preloader">
+      <div class="loader-out"></div>
+      <!-- /.loader-out -->
+      <div class="loader-center"></div>
+      <!-- /.loader-center -->
+      <div class="loader-in"></div>
+      <!-- /.loader-in -->
+    </div>
+    <!-- /.preloader -->
+
+    <noscript>
+      <strong>We're sorry but HelpIT doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+
     <div id="app"></div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <script>
+      $(document).ready(function() {
+        setTimeout(function() {
+          let preloader = document.getElementById("preloader");
+          if (!preloader.classList.contains("done")) {
+            preloader.classList.add("done");
+          }
+        }, 1000);
+      });
+    </script>
+
     <script src="/res/build.js"></script>
   </body>
 </html>

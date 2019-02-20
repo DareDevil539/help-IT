@@ -5,6 +5,7 @@ const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const sassMiddleware = require("node-sass-middleware");
 const apiCtrl = require("./api/api");
+const adminApiCtrl = require("./admin_api/admin_api");
 const routes = require("./routes");
 
 const app = express();
@@ -22,7 +23,6 @@ app.use(
   })
 );
 app.use(express.static(path.join(__dirname, "public")));
-
 app.use(/\/api/, apiCtrl);
 
 app.get(/.*\.view/, (req, res) => {
