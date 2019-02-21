@@ -1,7 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Main from "./components/Main";
-import User from "./components/User";
 import RegForm from "./components/RegForm";
 import User from "./components/User";
 
