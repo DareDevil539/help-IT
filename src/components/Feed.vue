@@ -3,7 +3,7 @@
     <div class="container mt-4">
       <div class="row">
         <div class="col-sm-12 col-md-4"><Controls class="mt-4" /></div>
-        <div class="col-sm-12 col-md-8 mb-4" v-for="item in feed" :key="item">
+        <div class="col-sm-12 col-md-8 offset-md-4 mb-4" v-for="item in feed" :key="item">
           <div class="card">
             <img class="card-img-top" :src="item.img" alt="Card image cap">
             <div class="card-body">
