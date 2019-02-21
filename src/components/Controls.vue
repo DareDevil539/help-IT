@@ -3,14 +3,19 @@
     <div class="btn-group-vertical">
       <button class="btn btn-light">Мій профіль</button>
       <button class="btn btn-light">Налаштування</button>
-      <button class="btn btn-light">Вихід</button>
+      <button class="btn btn-light" @click="end">Вихід</button>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "Controls"
+  name: "Controls",
+  methods: {
+    end() {
+      this.$cookies.remove("token");
+    }
+  }
 };
 </script>
 
