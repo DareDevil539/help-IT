@@ -38,7 +38,7 @@
         <div class="form-row">
           <div class="col-sm-12 mb-3">
             <label for="skills">Навички</label>
-            <input type="text" class="form-control" id="password" placeholder="Навички" v-model="skills">
+            <input type="text" class="form-control" id="skills" placeholder="Навички" v-model="skills">
             <small id="skillsHelp" class="form-text text-muted">Перелік технологій, якими ви володієте (через кому)</small>
           </div>
         </div>
