@@ -10,16 +10,16 @@ body {
   height: 100%;
   background: #313131;
   z-index: 999;
-  -webkit-transition: 1s all;
-  -moz-transition: 1s all;
-  -ms-transition: 1s all;
-  -o-transition: 1s all;
-  transition: 1s all;
   opacity: 1;
   visibility: visible;
 }
 
 #preloader.done {
+  -webkit-transition: 1s all;
+  -moz-transition: 1s all;
+  -ms-transition: 1s all;
+  -o-transition: 1s all;
+  transition: 1s all;
   opacity: 0;
   visibility: hidden;
 }

@@ -51,31 +51,31 @@ function parseQuery(query) {
   return res;
 }
 
+String.prototype.replaceAll = function(search, replace) {
+  return this.split(search).join(replace);
+}
+
 handleDisconnect();
 
 module.exports = function(req, res) {
   let module = req.query.module;
   let params = req.query.params || "*";
-  let origin = req.query.origin || "";
   let query = parseQuery(req.query.query);
   let statusCode = 0;
   let headers = {};
   let end = "";
 
-  params = params.replace(" ", ", ");
+  params = params.replaceAll(" ", ", ");
 
   console.log(`select ${params} from ${module} where ${query}`);
   execute(`select ${params} from ${module} where ${query}`, sel => {
     for (let i = 0; i < filter.length; i++) {
       for (let j = 0; j < sel.length; j++) {
         delete sel[j][filter[i]];
-        statusCode = 200;
-        headers["Content-Type"] = "application/json";
-        end = JSON.stringify(sel);
       }
     }
 
-    res.writeHead(statusCode, headers);
-    res.end(end);
+    res.writeHead(200, { "Content-Type": "application/json" });
+    res.end(JSON.stringify(sel));
   });
 };

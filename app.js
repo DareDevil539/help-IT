@@ -23,7 +23,12 @@ app.use(
   })
 );
 app.use(express.static(path.join(__dirname, "public")));
+app.use(/\/adminApi/, adminApiCtrl);
 app.use(/\/api/, apiCtrl);
+
+app.get(/\/user\.view/, (req, res) => {
+  res.end(JSON.stringify(req.query));
+});
 
 app.get(/.*\.view/, (req, res) => {
   //res.writeHead(200, { "Set-Cookie": "test=text" });

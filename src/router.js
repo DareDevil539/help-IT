@@ -16,7 +16,7 @@ export default new VueRouter({
       component: Main
     },
     {
-      path: "/welcome.view",
+      path: "/main.view",
       name: "main",
       component: Main
     },

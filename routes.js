@@ -1,5 +1,5 @@
 module.exports = [
-  "/welcome.view",
+  "/main.view",
   "/user.view",
   "/reg.view"
 ];

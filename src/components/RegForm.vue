@@ -29,13 +29,28 @@
             <input type="email" class="form-control" id="email" placeholder="Email" v-model="email" required>
           </div>
         </div>
-        <button class="btn btn-primary" @click="send">Зареєструватися</button>
+        <div class="form-row">
+          <div class="col-sm-12 mb-3">
+            <label for="password">Пароль</label>
+            <input type="password" class="form-control" id="password" placeholder="Пароль" v-model="password" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col-sm-12 mb-3">
+            <label for="skills">Навички</label>
+            <input type="text" class="form-control" id="password" placeholder="Навички" v-model="skills">
+            <small id="skillsHelp" class="form-text text-muted">Перелік технологій, якими ви володієте (через кому)</small>
+          </div>
+        </div>
+        <a href="/" class="btn btn-primary" @click="send">Зареєструватися</a>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import md5 from "md5";
+
 export default {
   name: "RegForm",
   data: function() {
@@ -44,19 +59,20 @@ export default {
       surname: "",
       username: "",
       email: "",
-      password: ""
+      password: "",
+      skills: "",
+      isDone: false
     };
   },
   methods: {
     send() {
-      // this.$http.post("http://localhost:3000/api", {
-      //   name: this.name,
-      //   surname: this.surname,
-      //   username: this.username,
-      //   email: this.email,
-      //   password: this.password
-      // });
-      this.$http.get("http://localhost:3000/api?module=users&params=id").then(res => console.log(res.body));
+      this.$cookies.set("token", md5(md5(this.username)));
+      this.$http.get(`https://help-it.herokuapp.com/adminApi?operation=insert&module=users&params=email,password,username,name,surname,skills,token&query="${this.email}",md5("${this.password}"),"${this.username}","${this.name}","${this.surname}","${this.skills}",md5(md5("${this.username}"))`)
+      .then(res => {
+        if (res.body === "Done") {
+          this.isDone = true;
+        }
+      });
     }
   }
 }

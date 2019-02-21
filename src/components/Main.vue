@@ -1,30 +1,35 @@
 <template>
   <div id="main">
-    <div class="container">
-      <div class="row">
-        <div class="col-12 col-md-8">
-          <Features/>
-        </div>
-        <div class="col-12 col-md-4 login-container m-auto">
-          <LoginForm class="login"/>
-        </div>
-      </div>
-    </div>
+    <Welcome v-if="!isLoginned" />
+    <Feed v-if="isLoginned" />
   </div>
 </template>
 
 <script>
-import Features from "./Features";
-import LoginForm from "./LoginForm";
+import Welcome from "./Welcome";
+import Feed from "./Feed";
 
 export default {
   name: "Main",
+  data: function() {
+    return {
+      isLoginned: false
+    };
+  },
   components: {
-    Features,
-    LoginForm
+    Welcome,
+    Feed
+  },
+  created() {
+    let token = this.$http.get(`https://help-it.herokuapp.com/adminApi?operation=select&module=users&params=token&query=token:"${this.$cookies.get("token")}"`)
+    .then(res => {
+      if (res.body.length === 0) {
+        this.isLoginned = false;
+      } else {
+        this.isLoginned = true;
+        //TODO
+      }
+    });
   }
-}
+};
 </script>
-
-<style lang="scss" scoped></style>
-
